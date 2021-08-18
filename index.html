@@ -70,7 +70,9 @@
 				<div class="subheading mb-5" id="addr">
 					B2-701 SRS Royal Hills · Faridabad, 121002 · (91) 8007704624 · <a
 						href="singh.sourav93@yahoo.com" id="email">singh.sourav93@yahoo.com</a>
-				</div>
+							 <div class="resizable" style="width: 200px; height: 210px; ">
+    <iframe scrolling="no" src="weather.html" style="width: 100%; height: 100%;"></iframe>
+</div>		</div>
 				<p class="lead mb-5" id="addr">A Software Engineer with 6 years
 					of work experience in web development primarily on server side
 					using technologies like Java, Spring, Hibernate, Maven, Jenkins
@@ -322,6 +324,28 @@
 		// on load of the page: switch to the currently selected tab
 		var hash = window.location.hash;
 		$('#about a[href="' + hash + '"]').tab('show');
+		
+		$(".resizable").resizable({
+    start: function(event, ui) {
+        ui.element.append($("<div/>", {
+            id: "iframe-barrier",
+            css: {
+                position: "absolute",
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                "z-index": 10
+        }
+        }));
+    },
+    stop: function(event, ui) {
+        $("#iframe-barrier", ui.element).remove();
+    },
+    resize: function(event, ui) {
+        $("iframe", ui.element).width(ui.size.width).height(ui.size.height);
+    }
+});
 	</script>
 </body>
 </html>
